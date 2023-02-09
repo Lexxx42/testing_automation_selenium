@@ -1,0 +1,9 @@
+[name="banana"] > .btn-group > .btn:nth-child(2)
+{
+    color:blue;
+}
+
+[name="banana"] button + .btn
+{
+    color:blue;
+}
