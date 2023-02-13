@@ -49,3 +49,28 @@
 # если ничего не было найдено,
 # то он вернёт пустой список и ваша программа перейдет
 # к выполнению следующего шага в коде.
+
+import contextlib
+import undetected_chromedriver as uc
+# from selenium import webdriver
+from time import sleep
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+browser = uc.Chrome()
+url = 'https://google.com'
+
+try:
+    browser.get(url)
+    search = browser.find_element(By.CSS_SELECTOR, '[name="q"]')
+    search.send_keys('ozon.ru')
+    search.send_keys(Keys.RETURN)
+    new_link = browser.find_element(By.PARTIAL_LINK_TEXT, "https://www.ozon.ru")
+    new_link.click()
+    goods = browser.find_elements(By.CSS_SELECTOR, ".n2e>.d4w>._4-a>button")
+    print(goods)
+finally:
+    sleep(2)
+    #browser.close()
+    with contextlib.suppress(OSError):
+        browser.quit()
