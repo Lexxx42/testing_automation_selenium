@@ -69,7 +69,7 @@ browser = webdriver.Chrome()
 link = "https://SunInJuly.github.io/execute_script.html"
 browser.get(link)
 radio = browser.find_element(By.CSS_SELECTOR, "#robotsRule")  # находим элемент
-browser.execute_script(f"return arguments[0].scrollIntoView(true);", radio)  # прокручиваем
+browser.execute_script("return arguments[0].scrollIntoView(true);", radio)  # прокручиваем
 radio.click()  # делаем клик
 
 # В метод execute_script мы передали текст js-скрипта и найденный элемент button,
