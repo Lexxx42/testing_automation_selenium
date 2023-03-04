@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options as firefoxOptions
+from selenium.webdriver.chrome.options import Options as chromeOptions
 
 
 def pytest_addoption(parser):
@@ -17,13 +17,13 @@ def browser(request):
     locale = request.config.getoption("locale")
     browser = None
     if browser_name == "chrome":
-        options = Options()
+        options = chromeOptions()
         options.add_experimental_option('prefs', {'intl.accept_languages': locale})
         print("\nstart chrome browser for test..")
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
-        options = Options()
-        options.add_experimental_option('prefs', {'intl.accept_languages': locale})
+        options = firefoxOptions()
+        options.set_preference("intl.accept_languages", locale)
         print("\nstart firefox browser for test..")
         browser = webdriver.Firefox(options=options)
     else:
