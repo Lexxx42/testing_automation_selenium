@@ -1,3 +1,4 @@
 selenium==4.8.2
 pytest==7.2.1
 python-dotenv==1.0.0
+pytest-rerunfailures==11.1.1
