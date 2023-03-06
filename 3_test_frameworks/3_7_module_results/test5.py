@@ -9,3 +9,5 @@
 # class
 # module
 # session
+
+# https://habr.com/ru/post/448786/
